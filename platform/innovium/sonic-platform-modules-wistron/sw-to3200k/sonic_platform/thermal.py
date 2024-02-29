@@ -49,7 +49,7 @@ class Thermal(ThermalBase):
         ThermalBase.__init__(self)
         self.minimum_thermal = self.get_temperature()
         self.maximum_thermal = self.get_temperature()
-        self.__initialize_threshold()
+        #self.__initialize_threshold()
 
     def __initialize_threshold(self):
         cmd = ["ipmitool", "raw", "0x4", "0x27"]
@@ -72,6 +72,7 @@ class Thermal(ThermalBase):
         return ""
 
     def __get_temp(self, temp_file):
+        return 0.0
         temp_file_path = os.path.join(self.SYSFS_THERMAL_DIR[self.index], temp_file)
         raw_temp = self.__read_txt_file(temp_file_path)
         temp = float(raw_temp)/1000

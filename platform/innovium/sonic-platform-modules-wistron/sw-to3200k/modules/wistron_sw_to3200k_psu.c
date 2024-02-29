@@ -224,7 +224,7 @@ exit:
     return status;
 }
 
-static int sw_to3200k_psu_remove(struct i2c_client *client)
+static void sw_to3200k_psu_remove(struct i2c_client *client)
 {
     struct sw_to3200k_psu_data *data = i2c_get_clientdata(client);
 
@@ -232,7 +232,6 @@ static int sw_to3200k_psu_remove(struct i2c_client *client)
     sysfs_remove_group(&client->dev.kobj, &sw_to3200k_psu_group);
     kfree(data);
 
-    return 0;
 }
 
 enum psu_index

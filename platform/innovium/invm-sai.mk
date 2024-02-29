@@ -1,6 +1,7 @@
 # INVM SAI
 
-INVM_SAI_ONLINE = https://github.com/Innovium/SONiC/raw/master/debian/master
+#INVM_SAI_ONLINE = https://github.com/Innovium/SONiC/raw/master/debian/master
+INVM_SAI_ONLINE = http://10.110.48.44/invm/master_new
 
 INVM_LIBSAI = isai.deb
 INVM_HSAI   = saihdr.deb
