@@ -22,6 +22,7 @@ nodes:
     led_refresh_cliff_timer: "0x15e"
     led_cfg_pic_stream_mode: "1"
     led_refresh_tmr_ctl_enable: "1"
+    stats_poll_interval: "1000"
     txring:
     - txring_id: "0"
       desc_count: "1024"
