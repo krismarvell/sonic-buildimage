@@ -1,6 +1,6 @@
 # sonic innovium ONE image installer
 
-SONIC_ONE_IMAGE = sonic-innovium.bin
+#SONIC_ONE_IMAGE = sonic-innovium.bin
 $(SONIC_ONE_IMAGE)_MACHINE = innovium
 $(SONIC_ONE_IMAGE)_INSTALLS += $(SYSTEMD_SONIC_GENERATOR)
 $(SONIC_ONE_IMAGE)_IMAGE_TYPE = onie

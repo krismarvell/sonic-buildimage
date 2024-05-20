@@ -55,7 +55,7 @@ ifeq ($(NOBULLSEYE), 0)
 	$(MAKE_WITH_RETRY) EXTRA_DOCKER_TARGETS=$(notdir $@) BLDENV=bullseye -f Makefile.work bullseye
 endif
 ifeq ($(NOBOOKWORM), 0)
-	$(MAKE_WITH_RETRY) BLDENV=bookworm -f Makefile.work $@
+	$(MAKE_WITH_RETRY) EXTRA_DOCKER_TARGETS=$(notdir $@) BLDENV=bookworm -f Makefile.work $@
 endif
 	BLDENV=bookworm $(MAKE) -f Makefile.work docker-cleanup
 

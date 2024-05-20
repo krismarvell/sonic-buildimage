@@ -12,6 +12,7 @@ PLATFORM_DIR=/usr/share/sonic/platform
 HWSKU_DIR=/usr/share/sonic/hwsku
 
 SONIC_ASIC_TYPE=$(sonic-cfggen -y /etc/sonic/sonic_version.yml -v asic_type)
+SONIC_ASIC_SUBTYPE=$(sonic-cfggen -y /etc/sonic/sonic_version.yml -v asic_subtype)
 
 if [ -x $CMD_DSSERVE ]; then
     CMD=$CMD_DSSERVE
@@ -229,15 +230,17 @@ config_syncd()
     elif [ "$SONIC_ASIC_TYPE" == "centec" ]; then
         config_syncd_centec
     elif [ "$SONIC_ASIC_TYPE" == "marvell" ]; then
-        config_syncd_marvell
+	if [ "$SONIC_ASIC_SUBTYPE" == "marvell_prestera" ]; then
+            config_syncd_marvell
+	else
+            config_syncd_innovium
+	fi
      elif [ "$SONIC_ASIC_TYPE" == "barefoot" ]; then
          config_syncd_barefoot
     elif [ "$SONIC_ASIC_TYPE" == "nephos" ]; then
         config_syncd_nephos
     elif [ "$SONIC_ASIC_TYPE" == "vs" ]; then
         config_syncd_vs
-    elif [ "$SONIC_ASIC_TYPE" == "innovium" ]; then
-        config_syncd_innovium
     else
         echo "Unknown ASIC type $SONIC_ASIC_TYPE"
         exit 1

@@ -272,6 +272,7 @@ PDDF_DIR = pddf
 PLATFORM_PDDF_PATH = platform/$(PDDF_DIR)
 include $(PLATFORM_PDDF_PATH)/rules.mk
 endif
+$(info +++ ---KS2 Making rules.mk for $@ --- +++)
 include $(PLATFORM_PATH)/rules.mk
 endif
 
@@ -1519,7 +1520,7 @@ $(addprefix $(TARGET_PATH)/, $(SONIC_INSTALLERS)) : $(TARGET_PATH)/% : \
 
 		j2 files/build_templates/docker_image_ctl.j2 > $($(docker:-dbg.gz=.gz)_CONTAINER_NAME).sh
 		chmod +x $($(docker:-dbg.gz=.gz)_CONTAINER_NAME).sh
-
+		$(info KS2 docker image generated $(($(docker:-dbg.gz=.gz)_CONTAINER_NAME).sh)
 		$(if $($(docker:-dbg.gz=.gz)_MACHINE),\
 			mv $($(docker:-dbg.gz=.gz)_CONTAINER_NAME).sh $($(docker:-dbg.gz=.gz)_MACHINE)_$($(docker:-dbg.gz=.gz)_CONTAINER_NAME).sh
 		)
@@ -1565,7 +1566,7 @@ $(addprefix $(TARGET_PATH)/, $(SONIC_INSTALLERS)) : $(TARGET_PATH)/% : \
 		DEBUG_SRC_ARCHIVE_DIRS="$(DBG_SRC_ARCHIVE)" \
 		DEBUG_SRC_ARCHIVE_FILE="$(DBG_SRC_ARCHIVE_FILE)" \
 			scripts/dbg_files.sh
-
+		$(info KS2 dbg_files.sh for $(dep_machine) is complete)
 		RFS_SQUASHFS_NAME=$*__$(dep_machine)__rfs.squashfs \
 		DEBUG_IMG="$(INSTALL_DEBUG_TOOLS)" \
 		DEBUG_SRC_ARCHIVE_FILE="$(DBG_SRC_ARCHIVE_FILE)" \
@@ -1597,6 +1598,7 @@ $(addprefix $(TARGET_PATH)/, $(SONIC_INSTALLERS)) : $(TARGET_PATH)/% : \
 		MASTER_FLUENTD_VERSION=$(MASTER_FLUENTD_VERSION) \
 			./build_debian.sh $(LOG)
 
+		$(info KS2 build_debian.sh for $(dep_machine) is complete)
 		USERNAME="$(USERNAME)" \
 		PASSWORD="$(PASSWORD)" \
 		TARGET_MACHINE=$(dep_machine) \
@@ -1613,6 +1615,7 @@ $(addprefix $(TARGET_PATH)/, $(SONIC_INSTALLERS)) : $(TARGET_PATH)/% : \
 		CA_CERT="$(CA_CERT)" \
 		TARGET_PATH="$(TARGET_PATH)" \
 			./build_image.sh $(LOG)
+		$(info KS2 build_image.sh for $(dep_machine) is complete)
 	)
 
 	$(foreach docker, $($*_DOCKERS), \
@@ -1625,6 +1628,7 @@ $(addprefix $(TARGET_PATH)/, $(SONIC_INSTALLERS)) : $(TARGET_PATH)/% : \
 		rm sonic_debian_extension.sh,
 	)
 
+	$(info KS2 rm foreach machine build complete)
 	chmod a+x $@
 	$(FOOTER)
 
