@@ -1,7 +1,7 @@
-# sonic innovium ONE image installer
+# sonic marvell-teralynx ONE image installer
 
-SONIC_ONE_IMAGE = sonic-innovium.bin
-$(SONIC_ONE_IMAGE)_MACHINE = innovium
+SONIC_ONE_IMAGE = sonic-marvell-teralynx.bin
+$(SONIC_ONE_IMAGE)_MACHINE = marvell-teralynx
 $(SONIC_ONE_IMAGE)_INSTALLS += $(SYSTEMD_SONIC_GENERATOR)
 $(SONIC_ONE_IMAGE)_IMAGE_TYPE = onie
 $(SONIC_ONE_IMAGE)_LAZY_INSTALLS += $(CEL_MIDSTONE_200I_PLATFORM_MODULE)

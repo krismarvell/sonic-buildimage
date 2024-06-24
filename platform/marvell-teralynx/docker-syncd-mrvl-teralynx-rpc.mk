@@ -1,4 +1,4 @@
-# docker image for innovium syncd with rpc
+# docker image for marvell-teralynx syncd with rpc
 
 DOCKER_SYNCD_INVM_RPC = docker-syncd-invm-rpc.gz
 $(DOCKER_SYNCD_INVM_RPC)_PATH = $(PLATFORM_PATH)/docker-syncd-invm-rpc

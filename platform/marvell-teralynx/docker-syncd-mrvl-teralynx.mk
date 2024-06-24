@@ -1,4 +1,4 @@
-# docker image for innovium syncd
+# docker image for marvell-teralynx syncd
 
 DOCKER_SYNCD_PLATFORM_CODE = invm
 include $(PLATFORM_PATH)/../template/docker-syncd-bookworm.mk
@@ -12,6 +12,6 @@ $(DOCKER_SYNCD_BASE)_DBG_DEPENDS += $(SYNCD_DBG) \
 
 $(DOCKER_SYNCD_BASE)_VERSION = 1.0.0
 $(DOCKER_SYNCD_BASE)_PACKAGE_NAME = syncd
-$(DOCKER_SYNCD_BASE)_MACHINE = innovium
+$(DOCKER_SYNCD_BASE)_MACHINE = marvell-teralynx
 
 $(DOCKER_SYNCD_BASE)_RUN_OPT += -v /host/warmboot:/var/warmboot
